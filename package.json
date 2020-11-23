@@ -1,5 +1,5 @@
 {
-  "name": "finalrosefantasy",
+  "name": "finalrosefantasydemo",
   "version": "0.1.0",
   "private": true,
   "engines": {
@@ -65,7 +65,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rcorr13/finalrosefantasy"
+    "url": "https://github.com/rcorr13/finalrosefantasydemo"
   },
   "keywords": [
     "node",
