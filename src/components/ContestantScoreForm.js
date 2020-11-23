@@ -73,11 +73,11 @@ export default class ContestantScoreForm extends React.Component {
     }
 
     async allContestants() {
-        return (await axios.get('https://finalrosefantasy.herokuapp.com/contestants')).data
+        return (await axios.get('https://finalrosefantasydemo.herokuapp.com/contestants')).data
     }
 
     async LogisticsInfo() {
-        return (await axios.get('https://finalrosefantasy.herokuapp.com/logistics')).data
+        return (await axios.get('https://finalrosefantasydemo.herokuapp.com/logistics')).data
     }
 
     constructor(props) {
@@ -146,7 +146,7 @@ export default class ContestantScoreForm extends React.Component {
                     ...this.state.logistics,
                     'firstsOccurred': firstsOccurred,
                 };
-                axios.put(('https://finalrosefantasy.herokuapp.com/updatelogistics'), {
+                axios.put(('https://finalrosefantasydemo.herokuapp.com/updatelogistics'), {
                     updatedLogistics}).then(res => console.log(res.data))
                 this.setState({'logistics': updatedLogistics})
             }
@@ -161,7 +161,7 @@ export default class ContestantScoreForm extends React.Component {
                     ...this.state.currentContestant,
                     'oneTimeActions': contestantFirsts,
                 };
-                axios.put(('https://finalrosefantasy.herokuapp.com/updatecontestant/'+updatedContestant.nameLink), {
+                axios.put(('https://finalrosefantasydemo.herokuapp.com/updatecontestant/'+updatedContestant.nameLink), {
                     updatedContestant
                 })
                     .then(res => console.log(res.data));
@@ -175,7 +175,7 @@ export default class ContestantScoreForm extends React.Component {
             totalpoints: (parseInt(this.state.currentContestant.totalpoints) + parseInt(actionOption.points)).toString()
     };
 
-        axios.put(('https://finalrosefantasy.herokuapp.com/updatecontestant/'+updatedContestant.nameLink), {
+        axios.put(('https://finalrosefantasydemo.herokuapp.com/updatecontestant/'+updatedContestant.nameLink), {
             updatedContestant
         })
             .then(res => console.log(res.data));
@@ -212,7 +212,7 @@ export default class ContestantScoreForm extends React.Component {
             totalpoints: (parseInt(this.state.currentContestant.totalpoints) - parseInt(actionOption.points)).toString()
         };
 
-        axios.put(('https://finalrosefantasy.herokuapp.com/updatecontestant/'+updatedContestant.nameLink), {
+        axios.put(('https://finalrosefantasydemo.herokuapp.com/updatecontestant/'+updatedContestant.nameLink), {
             updatedContestant
         })
             .then(res => console.log(res.data));
