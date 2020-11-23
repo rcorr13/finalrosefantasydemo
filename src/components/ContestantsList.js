@@ -145,7 +145,7 @@ export default function EnhancedTable() {
         async function getContestants() {
             try {
                 //const response = await axios.get("http://localhost:5000/contestants");
-                const response = await axios.get("https://finalrosefantasy.herokuapp.com/contestants");
+                const response = await axios.get("https://finalrosefantasydemo.herokuapp.com/contestants");
                 setContestants(response.data);
             } catch(error) {
                 console.log('error', error);
