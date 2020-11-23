@@ -41,8 +41,8 @@ function makeNewConnection(uri) {
 }
 
 
-//const mongooseConnection = makeNewConnection('mongodb://127.0.0.1:27017/finalrose');
-const uri = "mongodb+srv://rlcorr:m4I7RnsHNdkHqSGj@finalrosefantasy.arty4.mongodb.net/finalrose?retryWrites=true&w=majority";
+//const uri = "mongodb+srv://rlcorr:m4I7RnsHNdkHqSGj@finalrosefantasy.arty4.mongodb.net/finalrose?retryWrites=true&w=majority";
+const uri = "mongodb+srv://rlcorr:m4I7RnsHNdkHqSGj@finalrosefantasydemo.zqsrj.mongodb.net/finalrosedemo?retryWrites=true&w=majority"
 const mongooseConnection = makeNewConnection(uri);
 
 const User = mongooseConnection.model('users', UserSchema);
