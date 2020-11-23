@@ -129,17 +129,17 @@ class ContestantPicker extends React.Component {
 
     async allContestants() {
         //return (await axios.get('http://localhost:5000/contestants')).data
-        return (await axios.get('https://finalrosefantasy.herokuapp.com/contestants')).data
+        return (await axios.get('https://finalrosefantasydemo.herokuapp.com/contestants')).data
     }
 
     async allUsers() {
         //return (await axios.get('http://localhost:5000/users')).data
-        return (await axios.get('https://finalrosefantasy.herokuapp.com/users')).data
+        return (await axios.get('https://finalrosefantasydemo.herokuapp.com/users')).data
     }
 
     async getLogistics() {
         //return (await axios.get('http://localhost:5000/users')).data
-        return (await axios.get('https://finalrosefantasy.herokuapp.com/logistics')).data
+        return (await axios.get('https://finalrosefantasydemo.herokuapp.com/logistics')).data
     }
 
     constructor(props) {
