@@ -61,17 +61,6 @@ class ChangePassword extends Component {
         console.log(updatedUser)
 
         this.props.changePassword(updatedUser, this.props.history);
-        /*
-        //console.log(updatedUser)
-        axios.put(('http://localhost:5000/updatepassword/'+user._id), {
-            // axios.put(('https://finalrosefantasy.herokuapp.com/updateuser/'+user._id), {
-            updatedUser
-        })
-         */
-
-        //alert('Password Updated!')
-        //this.props.history.push('/')
-        //this.props.loginUser(user);
     }
 
     componentWillReceiveProps(nextProps) {
