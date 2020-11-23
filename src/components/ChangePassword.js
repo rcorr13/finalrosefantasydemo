@@ -25,7 +25,7 @@ class ChangePassword extends Component {
 
     async allUsers() {
         //return (await axios.get('http://localhost:5000/users')).data
-        return (await axios.get('https://finalrosefantasy.herokuapp.com/users')).data
+        return (await axios.get('https://finalrosefantasydemo.herokuapp.com/users')).data
     }
 
 
