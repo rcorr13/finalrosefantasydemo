@@ -94,7 +94,7 @@ export default class CreateContestant extends Component {
             totalpoints: this.state.totalpoints,
         };
 
-        axios.post('https://finalrosefantasy.herokuapp.com/addcontestant', newContestant)
+        axios.post('https://finalrosefantasydemo.herokuapp.com/addcontestant', newContestant)
             .then(res => console.log(res.data));
 
         this.setState({
