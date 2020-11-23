@@ -263,7 +263,7 @@ class ContestantPicker extends React.Component {
 
         console.log(updatedUser)
 
-        axios.put(('https://finalrosefantasy.herokuapp.com/updateuser/'+user._id), {
+        axios.put(('https://finalrosefantasydemo.herokuapp.com/updateuser/'+user._id), {
             updatedUser
         })
             .then(res => console.log(res.data));
