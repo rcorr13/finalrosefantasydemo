@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const User = mongoose.model('users');
 const opts = {};
 
+//from https://www.designmycodes.com/react/reactjs-redux-nodejs-mongodb-jwt-authentication-tutorial.html
+
 opts.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = 'secret';
 

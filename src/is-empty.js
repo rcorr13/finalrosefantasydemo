@@ -1,3 +1,5 @@
+//from https://www.designmycodes.com/react/reactjs-redux-nodejs-mongodb-jwt-authentication-tutorial.html
+
 const isEmpty = (value) => {
     return (
         value === undefined ||

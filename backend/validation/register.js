@@ -1,6 +1,8 @@
 const Validator = require('validator');
 const isEmpty = require('../is-empty');
 
+//adapted from https://www.designmycodes.com/react/reactjs-redux-nodejs-mongodb-jwt-authentication-tutorial.html
+
 module.exports = function validateRegisterInput(data) {
     let errors = {};
     data.firstname = !isEmpty(data.firstname) ? data.firstname : '';

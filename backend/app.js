@@ -12,8 +12,11 @@ const jwt = require('jsonwebtoken');
 const ContestantBackendSchema = require('./models/ContestantBackend');
 const UserSchema = require('./models/User');
 const LogisticsSchema = require('./models/Logistics');
-const ObjectId = require("mongoose");
 const path = require('path');
+
+// authentication design based on code from
+// https://www.designmycodes.com/react/reactjs-redux-nodejs-mongodb-jwt-authentication-tutorial.html
+
 
 function makeNewConnection(uri) {
     const db = mongoose.createConnection(uri, {
@@ -41,7 +44,6 @@ function makeNewConnection(uri) {
 }
 
 
-//const uri = "mongodb+srv://rlcorr:m4I7RnsHNdkHqSGj@finalrosefantasy.arty4.mongodb.net/finalrose?retryWrites=true&w=majority";
 const uri = "mongodb+srv://rlcorr:m4I7RnsHNdkHqSGj@finalrosefantasydemo.zqsrj.mongodb.net/finalrosedemo?retryWrites=true&w=majority"
 const mongooseConnection = makeNewConnection(uri);
 
@@ -147,21 +149,6 @@ router.post('/login', (req, res) => {
         });
 });
 
-router.route('/update/:id').put((req, res, next) => {
-    User.findByIdAndUpdate(req.params.id, {
-        $set: req.body
-    }, (error, data) => {
-        if (error) {
-            return next(error);
-            console.log(error)
-        } else {
-            res.json(data)
-            console.log('User updated successfully !')
-            res.redirect('/users')
-        }
-    })
-})
-
 router.put('/updatepassword', (req, res) => {
     console.log(req.body)
 
@@ -202,7 +189,7 @@ router.put('/updatepassword', (req, res) => {
     })});
 
 
-
+//Adding the Contestants via the backend - not necessary (we have a CreateContestant frontend) but quicker to start
 firstRun = false;
 if (firstRun) {
     /*
@@ -259,22 +246,6 @@ if (firstRun) {
     });
 };
 
-
-isWeek6 = false;
-if (isWeek6) {
-    Contestants.insertMany([
-        {nameLink: 'Montel', name: 'Montel', age: '30', job: 'Gym Owner', city: 'Boston', stateUS: 'MA', status: 'on', imageLink: 'https://cdn1.edgedatg.com/aws/v2/abc/TheBachelorette/person/3573249/b0d707264b69d7d6ce873d0e6122f6f1/166x166-Q90_b0d707264b69d7d6ce873d0e6122f6f1.jpg', totalpoints: '0', week1points: '0', week1actions:[], week2points: '0', week2actions: [], week3points: '0', week3actions:[], week4points: '0', week4actions: [], week5points: '0', week5actions:[], week6points: '0', week6actions: [], week7points: '0', week7actions:[], week8points: '0', week8actions: [], week9points: '0', week9actions:[], week10points: '0', week10actions: [], oneTimeActions: []},
-        {nameLink: 'Noah', name: 'Noah', age: '25', job: 'Registered Travel Nurse', city: 'Tulsa', stateUS: 'OK', status: 'on', imageLink: 'https://cdn1.edgedatg.com/aws/v2/abc/TheBachelorette/person/3573261/e53001210c45025e95951d7aa7f4899c/166x166-Q90_e53001210c45025e95951d7aa7f4899c.jpg', totalpoints: '0', week1points: '0', week1actions:[], week2points: '0', week2actions: [], week3points: '0', week3actions:[], week4points: '0', week4actions: [], week5points: '0', week5actions:[], week6points: '0', week6actions: [], week7points: '0', week7actions:[], week8points: '0', week8actions: [], week9points: '0', week9actions:[], week10points: '0', week10actions: [], oneTimeActions: []},
-        {nameLink: 'Peter', name: 'Peter', age: '32', job: 'Real Estate Agent', city: 'Framingham', stateUS: 'MA', status: 'on', imageLink: 'https://cdn1.edgedatg.com/aws/v2/abc/TheBachelorette/person/3573267/ab57f71422da435392990a569521321e/166x166-Q90_ab57f71422da435392990a569521321e.jpg', totalpoints: '0', week1points: '0', week1actions:[], week2points: '0', week2actions: [], week3points: '0', week3actions:[], week4points: '0', week4actions: [], week5points: '0', week5actions:[], week6points: '0', week6actions: [], week7points: '0', week7actions:[], week8points: '0', week8actions: [], week9points: '0', week9actions:[], week10points: '0', week10actions: [], oneTimeActions: []},
-        {nameLink: 'Spencer', name: 'Spencer', age: '30', job: 'Water Treatment Engineer', city: 'La Jolla', stateUS: 'CA', status: 'on', imageLink: 'https://cdn1.edgedatg.com/aws/v2/abc/TheBachelorette/person/3573276/a27407210cfdac025a0e356c7e01e9d6/166x166-Q90_a27407210cfdac025a0e356c7e01e9d6.jpg', totalpoints: '0', week1points: '0', week1actions:[], week2points: '0', week2actions: [], week3points: '0', week3actions:[], week4points: '0', week4actions: [], week5points: '0', week5actions:[], week6points: '0', week6actions: [], week7points: '0', week7actions:[], week8points: '0', week8actions: [], week9points: '0', week9actions:[], week10points: '0', week10actions: [], oneTimeActions: []},
-    ])
-        .then(function(){
-            console.log("Contestants inserted")  // Success
-        }).catch(function(error){
-        console.log(error)      // Failure
-    });
-}
-
 app.use('/api', router);
 
 app.get('/users', async (req, res) => {
@@ -314,66 +285,6 @@ app.put('/updatelogistics', (req, res) => {
             };
         })})
 
-app.put('/setCurrentWeek/:currentWeek', (req, res) => {
-    Logistics.findOneAndUpdate({_id: req.params._id}, {currentWeek: req.body.currentWeek}, {returnOriginal: false, new: true})
-        .then((err, result) => {
-            if (err) {
-                res.send(err);
-            } else {
-                return res.json(result);
-            };
-        })
-    });
-
-app.put('/updatepicks/:id', (req, res) => {
-    User.findOne({
-        id: req.body.updatedUser.id
-    }, (err, user) => {
-        if (err) {
-            return res.send(err);
-        }
-
-        if (user === null) {
-            return res.send({
-                msg: ('No matching user with name')
-            });
-        }
-        user.picks = req.body.updatedUser.picks
-        user.save(err => {
-            if (err) {
-                res.send(err);
-            }
-            const payload = {
-                id: user.id,
-                email: user.email,
-                picks: user.picks,
-            }
-            jwt.sign(payload, 'secret', {
-                expiresIn: 3600
-            }, (err, token) => {
-                if (err) console.error('There is some error in token', err);
-                else {
-                    res.json({
-                        success: true,
-                        token: `Bearer ${token}`
-                    });
-                }
-            });
-            res.json(user);
-        });
-    });
-});
-
-app.get('/getuser', passport.authenticate('jwt', { session: false }), (req, res) => {
-    console.log(req.user.id);
-    return res.json({
-        id: req.user.id,
-        firstname: req.user.firstname,
-        email: req.user.email,
-        picks: req.user.picks
-    });
-});
-
 app.put('/updateuser/:_id', (req, res) => {
     User.findOneAndReplace({_id: req.params._id}, req.body.updatedUser, {returnOriginal: false})
         .then((err, result) => {
@@ -393,6 +304,17 @@ app.put('/updatecontestant/:nameLink', (req, res) => {
                 return res.json(result);
             };
         })})
+
+app.put('/setCurrentWeek/:currentWeek', (req, res) => {
+    Logistics.findOneAndUpdate({_id: req.params._id}, {currentWeek: req.body.currentWeek}, {returnOriginal: false, new: true})
+        .then((err, result) => {
+            if (err) {
+                res.send(err);
+            } else {
+                return res.json(result);
+            };
+        })
+});
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("../build"));
