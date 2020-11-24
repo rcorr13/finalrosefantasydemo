@@ -21,6 +21,7 @@ import ChangePassword from "./components/ChangePassword";
 import HowTo from "./components/HowTo";
 import ScoringRules from "./components/ScoringRules";
 import DeleteContestant from "./components/DeleteContestant";
+import CreateContestant from "./components/CreateContestant";
 
 if(localStorage.jwtToken) {
     setAuthToken(localStorage.jwtToken);
@@ -54,6 +55,7 @@ class App extends Component {
                             <Route exact path="/changepassword" component={ChangePassword} />
                             <Route exact path="/howto" component={HowTo} />
                             <Route exact path="/scoringrules" component={ScoringRules} />
+                            <Route exact path="/createcontestant" component={CreateContestant} />
                             <Route exact path="/deletecontestant" component={DeleteContestant} />
                         </div>
                     </div>
