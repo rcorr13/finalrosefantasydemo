@@ -3,10 +3,50 @@
 ## Motivation
 Yes, there are other Bachelor/Bachelorette fantasy leagues that are well established where you can earn or lose points for contestants on your "team" completing actions like getting a rose or going on a horseback riding date or being shirtless on camera. However, most of these leagues will penalize you if your contestant behaves poorly. We at Final Rose Fantasy believe that the drama is often the best part of this guilty-pleasure TV show and have created a new fantasy league that will reward you if your contestant cries (+10) or vomits (+12) or gets a word bleeped out (+7). Contestants on the "most dramatic season ever" deserve to earn points for causing drama, and this fantasy league website allows you to pick your team using our handy "Pick Contestant" tool, and the website (and its dedicated host) will take care of the rest.
 
-## Final Rose Fantasy - Demo Version
+##Links
 
 
+##API Documentation
 
+### Users
+
+Register User:
+  URL: https://finalrosefantasydemo.herokuapp.com/register
+  Type: POST
+  Request Params: JSON Array with user firstname, lasname, email, password, and confirmed password
+  
+  
+Get course by course code
+  url: https://unc-schedule-backend.herokuapp.com/courses/{courseCode}
+type: GET
+Returns: JSON Object of requested course
+User API:
+
+Add a user:
+url: https://unc-schedule-backend.herokuapp.com//users
+type: POST
+CURL ex.: curl -X POST -H "Content-Type: application/json" --data
+'{"name": "Mac Carlton", "username": "maccarlton", "password": "mac123", "courses_taken": ["110", "410", "411", "426"]}' https://unc-schedule-backend.herokuapp.com/users
+Returns: updated list of all users
+Update a users information:
+url: https://unc-schedule-backend.herokuapp.com/users/{id}
+type PUT
+CURL ex.: curl -X PUT -H "Content-Type: application/json" --data
+'{"courses_taken": {updatedArray}]' https://unc-schedule-backend.herokuapp.com/users
+Returns updated JSON for updated user
+Get a list of all users:
+url: https://unc-schedule-backend.herokuapp.com/users
+type GET
+Returns: JSON Array of all users
+Get a specific user:
+url: https://unc-schedule-backend.herokuapp.com/users/{id}
+type GET
+Returns: JSON Object of user
+Delete a user:
+url: https://unc-schedule-backend.herokuapp.com/users/delete
+type DELETE
+body includes user's ID
+Returns: Updated array of users
 
 
 
