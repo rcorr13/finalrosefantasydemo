@@ -1,6 +1,7 @@
-import { SET_CURRENT_USER, GET_CURRENT_USER } from '../actions/types';
-//import isEmpty from '../validation/is-empty';
+import { SET_CURRENT_USER } from '../actions/types';
 import isEmpty from '../is-empty';
+
+// adapted from https://www.designmycodes.com/react/reactjs-redux-nodejs-mongodb-jwt-authentication-tutorial.html
 
 const initialState = {
     isAuthenticated: false,
@@ -15,12 +16,6 @@ export default function(state = initialState, action ) {
                 isAuthenticated: !isEmpty(action.payload),
                 user: action.payload
             }
-        case GET_CURRENT_USER:
-            return {
-                ...state,
-                isAuthenticated: !isEmpty(action.payload),
-                user: action.payload,
-            };
         default:
             return state;
     }
