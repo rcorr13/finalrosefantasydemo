@@ -3,47 +3,91 @@
 ## Motivation
 Yes, there are other Bachelor/Bachelorette fantasy leagues that are well established where you can earn or lose points for contestants on your "team" completing actions like getting a rose or going on a horseback riding date or being shirtless on camera. However, most of these leagues will penalize you if your contestant behaves poorly. We at Final Rose Fantasy believe that the drama is often the best part of this guilty-pleasure TV show and have created a new fantasy league that will reward you if your contestant cries (+10) or vomits (+12) or gets a word bleeped out (+7). Contestants on the "most dramatic season ever" deserve to earn points for causing drama, and this fantasy league website allows you to pick your team using our handy "Pick Contestant" tool, and the website (and its dedicated host) will take care of the rest.
 
-##Links
+## Links
   Demo Webpage: https://finalrosefantasydemo.herokuapp.com/
   Explanatory Video: https://youtu.be/9Sw10J6ol-I
   Original Webpage: https://finalrosefantasy.herokuapp.com/
 
-##API Documentation
+## API Documentation
 
 ### Users
 
 Register User:
   URL: https://finalrosefantasydemo.herokuapp.com/register
   Type: POST
-  Request Params: Array with user firstname, lastname, email, password, and confirmed password
+  Request: Array with user firstname, lastname, email, password, and confirmed password
   Response: JSON with user information
   
 Login User:
   URL: https://finalrosefantasydemo.herokuapp.com/login
   Type: POST
-  Request Params: Array with user email and password
+  Request: Array with user email and password
   Response: JSON with JWT token
 
 Update Password:
   URL: https://finalrosefantasydemo.herokuapp.com/updatepassword
   Type: PUT
-  Request Params: Array with user information, old password, new passowrd, and confirmed new password
+  Request: Array with user information, old password, new passowrd, and confirmed new password
   Response: JSON with updated user
   
 Update User:
   URL: https://finalrosefantasydemo.herokuapp.com/updateuser/:_id
   Type: PUT
-  Request Params: Array with updated user information
+  Request: Array with updated user information
   Response: JSON with updated users
   
 Get Users:  
   URL: https://finalrosefantasydemo.herokuapp.com/users
   Type: GET
-  Request Params: None
+  Request: None
   Response: JSON with all users
   
 ### Contestants
+  
+Get Contestants:  
+  URL: https://finalrosefantasydemo.herokuapp.com/contestants
+  Type: GET
+  Request: None
+  Response: JSON with all contestants
 
+Add Contestant:  
+  URL: https://finalrosefantasydemo.herokuapp.com/addcontestant
+  Type: POST
+  Request: Array with contestant name, nameLink, age, job, city, stateUS, status, imageLink, and totalpoints
+  Response: Response status code
+
+Update Contestant:  
+  URL: https://finalrosefantasydemo.herokuapp.com/addcontestant
+  Type: POST
+  Request: Array with updated contestant information
+  Response: JSON with all contestants
+  
+Delete Contestant:  
+  URL: https://finalrosefantasydemo.herokuapp.com/delete/:nameLink
+  Type: POST
+  Request: Array with contestant information for contestant to be deleted
+  Response: JSON with all contestants (without deleted contestant)
+  
+### Logists
+  
+Get Logistics:  
+  URL: https://finalrosefantasydemo.herokuapp.com/contestants
+  Type: GET
+  Request: None
+  Response: JSON with all contestants
+
+Add Contestant:  
+  URL: https://finalrosefantasydemo.herokuapp.com/addcontestant
+  Type: POST
+  Request: Array with contestant name, nameLink, age, job, city, stateUS, status, imageLink, and totalpoints
+  Response: Response status code
+
+Delete Contestant:  
+  URL: https://finalrosefantasydemo.herokuapp.com/delete/:nameLink
+  Type: POST
+  Request: Array with contestant information for contestant to be deleted
+  Response: JSON with all contestants (without deleted contestant)
+  
   
 Get course by course code
   url: https://unc-schedule-backend.herokuapp.com/courses/{courseCode}
