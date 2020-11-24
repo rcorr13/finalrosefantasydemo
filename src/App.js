@@ -16,6 +16,7 @@ import AdminPage from "./components/AdminPage";
 import ContestantsList from "./components/ContestantsList";
 import Standings from "./components/Standings";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ChangePassword from "./components/ChangePassword";
 import HowTo from "./components/HowTo";
 import ScoringRules from "./components/ScoringRules";
