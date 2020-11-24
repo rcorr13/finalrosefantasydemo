@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/authentication';
 import { withRouter } from 'react-router-dom';
-import styled from "styled-components";
-import NavItem from "react-bootstrap";
 
-import{ Navbar, Nav, Button, NavDropdown}  from "react-bootstrap";
-
-const Container = styled.div`
-    display: flex;
-    `;
+import{ Navbar, Nav, NavDropdown}  from "react-bootstrap";
 
 class NavBar extends Component {
 

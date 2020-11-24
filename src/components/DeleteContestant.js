@@ -1,11 +1,8 @@
 import React from "react";
-import { debounce } from "throttle-debounce";
 import Image from "react-bootstrap/Image";
 import styled from "styled-components";
 import axios from "axios";
 import Grid from '@material-ui/core/Grid';
-import ActionKey from '../ActionKey';
-import DoubleClick from "./DoubleClick";
 
 const ContainerContestantPicture = styled.div`
     margin-left: 5px;
@@ -62,7 +59,7 @@ export default class DeleteContestant extends React.Component {
         axios.delete(('https://finalrosefantasydemo.herokuapp.com/delete/'+contestant.nameLink))
             .then(res => console.log(res.data));
 
-        let contestantsUpdated = this.state.contestants.filter(person => (person.nameLink != contestant.nameLink))
+        let contestantsUpdated = this.state.contestants.filter(person => (person.nameLink !== contestant.nameLink))
         this.setState({
             contestants: contestantsUpdated,
         })

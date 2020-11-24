@@ -1,3 +1,5 @@
+//key for all actions and their point values
+
 let ActionKey;
 export default ActionKey = [
     {id: 1, key: 'Contestant is chosen for a date', points: 5, category: 'MultiplePerEpisode'},

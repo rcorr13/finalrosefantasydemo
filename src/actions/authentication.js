@@ -1,7 +1,9 @@
 import axios from 'axios';
-import { GET_ERRORS, SET_CURRENT_USER, GET_CURRENT_USER } from './types';
+import { GET_ERRORS, SET_CURRENT_USER } from './types';
 import setAuthToken from '../setAuthToken';
 import jwt_decode from 'jwt-decode';
+
+// adapted from https://www.designmycodes.com/react/reactjs-redux-nodejs-mongodb-jwt-authentication-tutorial.html
 
 export const registerUser = (user, history) => dispatch => {
     axios.post('/api/register', user)
@@ -37,22 +39,6 @@ export const setCurrentUser = decoded => {
         payload: decoded
     }
 }
-
-export const getCurrentUser = () => dispatch => {
-    axios.post("/api/currentuser")
-        .then(res =>
-            dispatch({
-                type: GET_CURRENT_USER,
-                payload: res.data
-            })
-        )
-        .catch(err =>
-            dispatch({
-                type: GET_ERRORS,
-                payload: err.response.data
-            })
-        );
-};
 
 export const logoutUser = (history) => dispatch => {
     localStorage.removeItem('jwtToken');

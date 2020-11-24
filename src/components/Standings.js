@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -189,7 +189,7 @@ export default function EnhancedTable() {
                         />
                         <TableBody>
                             {stableSort(rows, getComparator(order, orderBy)).map(
-                                (row, index) => {
+                                row => {
                                     return (
                                         <TableRow hover key={row.firstname}>
                                             <TableCell align="left">{row.firstname}</TableCell>

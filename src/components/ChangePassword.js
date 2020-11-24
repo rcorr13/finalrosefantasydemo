@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import { changePassword } from '../actions/authentication';
-//import {changePassword, registerUser, setCurrentUser} from '../actions/authentication';
 import classnames from 'classnames';
 import axios from "axios";
 

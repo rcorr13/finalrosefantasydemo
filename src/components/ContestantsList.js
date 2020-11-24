@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -10,7 +10,6 @@ import TableRow from "@material-ui/core/TableRow";
 import TableSortLabel from "@material-ui/core/TableSortLabel";
 import Paper from "@material-ui/core/Paper";
 import axios from "axios";
-import Image from "react-bootstrap/Image";
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -198,7 +197,7 @@ export default function EnhancedTable() {
                                 (row) => {
                                     return (
                                         <TableRow hover key={row.name}>
-                                            <TableCell align="left" ><img src={row.imageLink} width="100" /></TableCell>
+                                            <TableCell align="left" ><img src={row.imageLink} width="100" alt={row.nameLink}/></TableCell>
                                             <TableCell align="left">{row.name}</TableCell>
                                             <TableCell align="left">{row.age}</TableCell>
                                             <TableCell align="left">{row.job}</TableCell>

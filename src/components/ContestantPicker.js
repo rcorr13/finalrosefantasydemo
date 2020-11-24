@@ -61,7 +61,6 @@ const ContainerContestantName = styled.div`
     flex-direction: column;
 `;
 
-/*
 const ContainerContestant = styled.div`
     font-size: 2em;
     border: 1px solid lightgrey;
@@ -69,25 +68,12 @@ const ContainerContestant = styled.div`
     padding: 8px;
     margin-bottom: 8px;
     background-color: ${props =>
-        props.isDraggable  ? 'lightgreen' :
-            (props.isDragging ? 'lightgrey' : 'white')};
-    display: flex;
-    flex-direction: row;
-`;
- */
-
-const ContainerContestant = styled.div`
-    font-size: 2em;
-    border: 1px solid lightgrey;
-    border-radius: 2px;
-    padding: 8px;
-    margin-bottom: 8px;
-    background-color: ${props =>
-    (props.type == 'onTeam'  ? 'lightgreen' :
+    (props.type === 'onTeam'  ? 'lightgreen' :
         (props.isDragging ? 'lightgrey' : 'white'))};
     display: flex;
     flex-direction: row;
 `;
+
 class ContestantPicker extends React.Component {
 
     componentDidMount() {
@@ -245,9 +231,7 @@ class ContestantPicker extends React.Component {
             },
         };
 
-
         this.setState(newState)
-        return;
     };
 
     handleClick = () => {
@@ -276,14 +260,13 @@ class ContestantPicker extends React.Component {
     }
 
     typeContestant = (nameLink) => {
+        let typeName = '';
         if (this.contestantOnTeam(nameLink)) {
-            let typeName = 'onTeam'
-            return typeName;
+            typeName = 'onTeam'
         } else {
-            let typeName = 'movable';
-            return typeName;
+            typeName = 'movable';
         }
-        return;
+        return typeName;
     }
 
     render() {

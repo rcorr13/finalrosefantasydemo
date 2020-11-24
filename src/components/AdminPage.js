@@ -126,10 +126,6 @@ export default class AdminPage extends React.Component {
             FinalPicks[user.firstname] = []
         })
 
-        /*
-        let lastWeekTeams =  {}
-        users.map(user => {lastWeekTeams[user.firstname] = []})
-         */
         let lastWeekTeamColumnName = "week" + (parseInt(value) - 1) + "team";
         let ContestantTimesPicked = this.lastWeekContestantTimesPicked(value);
 
@@ -328,7 +324,7 @@ export default class AdminPage extends React.Component {
                         Delete Contestant
                     </Button>
                 </Container>
-                {weekOptions.map((week, index) => {
+                {weekOptions.map(week => {
                     return (
                         <Container key={"WeekContainer" + week}>
                             <Button variant="primary" style={{margin: "4px", width: "110px"}} value={week} key={("SetCurrentWeek"+week)} onClick={e => this.setCurrentWeek(e.target.value)}>Set As Week {week}</Button>

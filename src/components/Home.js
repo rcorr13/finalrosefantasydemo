@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import RosePic from "../images/HomepageRose.jpg";
 import styled from 'styled-components';
-import {Nav} from "react-bootstrap";
 
 const TextBelow = styled.div`
     font-size: 1em;

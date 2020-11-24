@@ -1,17 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import ActionKey from '../ActionKey';
-
-const TextBelow = styled.div`
-    font-size: 1em;
-    font-weight: bold;
-    text-align: center;
-    padding: 8px;
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-`;
 
 let ActionGroups = [
     {group: 'Actions - Multiple Per Episode', ids: [1,2,3,11,12,13,14,15,16,17,18,19,20,21,22,23,24]},
