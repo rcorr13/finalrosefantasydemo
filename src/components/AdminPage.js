@@ -304,6 +304,14 @@ export default class AdminPage extends React.Component {
         this.props.history.push('/scoreform')
     };
 
+    createContestantLink=()=> {
+        this.props.history.push('/createcontestant')
+    }
+
+    deleteContestantLink = () => {
+        this.props.history.push('/deletecontestant')
+    }
+
     render() {
         let weekOptions = ['1','2','3','4','5','6','7','8','9','10','11','12'];
         return (
@@ -312,9 +320,14 @@ export default class AdminPage extends React.Component {
                 <br />
                 <h3>Current Week: {this.state.currentWeek}</h3>
                 <br />
-                <Button variant="warning" style={{width: "180px"}} onClick={this.createContestantLink}>
-                    Create Contestant
-                </Button>
+                <Container key="createdelete">
+                    <Button variant="warning" style={{width: "180px", margin: "4px"}} onClick={this.createContestantLink}>
+                        Create Contestant
+                    </Button>
+                    <Button variant="warning" style={{width: "180px", margin: "4px"}} onClick={this.deleteContestantLink}>
+                        Delete Contestant
+                    </Button>
+                </Container>
                 {weekOptions.map((week, index) => {
                     return (
                         <Container key={"WeekContainer" + week}>
